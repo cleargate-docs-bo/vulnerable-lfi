@@ -19,8 +19,12 @@ if(!isset($_GET['view']) || ($_GET['view']=="index.php")) {
     <img src='https://cdn.drawception.com/images/panels/2016/6-6/9wAKWbFZAz-8.png'>";
 }
 else {
+	$allowed_pages = ['about-us.html', 'contact-us.html'];
+	if (!in_array($_GET['view'], $allowed_pages, true)) {
+		die('Invalid page');
+	}
 	echo "<p>";
-	include("/var/www/html/" .$_GET['view']);
+	include("/var/www/html/" . $_GET['view']);
 	echo "</p>";
 }
 ?>
